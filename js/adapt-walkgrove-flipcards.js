@@ -6,6 +6,10 @@ define([
 
   var FlipcardsView = ComponentView.extend({
 
+    events: {
+      'click .js-flip-item': 'onFlip'
+    },
+    
     preRender: function() {
       this.checkIfResetOnRevisit();
     },
@@ -21,7 +25,38 @@ define([
       if (isResetOnRevisit) {
         this.model.reset(isResetOnRevisit);
       }
-    }
+    },
+
+    onFlip: function(event) {
+      event.preventDefault();
+
+      if(this.$(event.currentTarget).hasClass('is-flipped') === true) {
+        this.$(event.currentTarget).addClass('is-not-flipped');
+        this.$(event.currentTarget).removeClass('is-flipped');
+      }else {
+        this.$(event.currentTarget).addClass('is-flipped');
+        this.$(event.currentTarget).removeClass('is-not-flipped');
+      }
+
+      const cardIndex = $(event.currentTarget).parent().data('index');
+      this.setItemVisited(cardIndex);
+    },
+
+    setItemVisited: function(index) {
+      this.$('.flipcards__widget').eq(index).addClass('is-visited');
+      this.checkAllItemsCompleted();
+    },
+
+    checkAllItemsCompleted: function() {
+      var complete = false;
+      if(this.$('.flipcards__widget').length === this.$('.is-visited').length){
+        complete = true;
+      }
+      if(complete) {
+        this.setCompletionStatus();
+      }
+    },
+
   },
   {
     template: 'flipcards'
