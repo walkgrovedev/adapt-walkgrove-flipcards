@@ -3,7 +3,7 @@
 
   <div class="flipcards__main">
     {{#each _items}}
-    <div class="flipcards__widget {{_classes}}" data-index="{{@index}}">
+    <div class="flipcards__widget {{_classes}} large-{{../_columns._large}} medium-{{../_columns._medium}} small-{{../_columns._small}}" data-index="{{@index}}">
       <div class="flipcards__card js-flip-item">
         <div class="flipcards__card-front">
           {{#if _front.title}}<div class="flipcards__title-front">{{_front.title}}</div>{{/if}}

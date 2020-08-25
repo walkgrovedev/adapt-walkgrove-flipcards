@@ -1,20 +1,25 @@
 .flipcards {
 
     &__main {
-        margin-top: 2rem;
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         height: auto;
-        height: 50vh;
     }
 
 
     &__widget {
-        margin: 0 1rem;
-        height: 100%;
-        flex: 1 1 auto;
+        height: 45vh;
+        @media (orientation: landscape) {
+            height: 65vh;
+        }
+        max-height: 450px;
+
         position: relative;
         cursor: pointer;
         perspective: 1000px;
+        float: left;
 
         &.full-image {
             .flipcards__icon {
@@ -125,6 +130,48 @@
     &__image {
         width: 100%;
         height: auto;
+    }
+
+
+    /* COLUMNS */
+
+    .large-3 {
+        width: 30%;
+        margin: 1.5%;
+    }
+
+    .large-2 {
+        width: 47%;
+        margin: 1.5%;
+    }
+
+    .large-1 {
+        width: 100%;
+        margin: 1.5% 0;
+    }
+
+    @media (max-width: @device-width-medium) {
+        .medium-2 {
+            width: 47%;
+            margin: 1.5%;
+        }
+    
+        .medium-1 {
+            width: 100%;
+            margin: 1.5% 0;
+        }
+    }
+    
+    @media (max-width: @device-width-small) {
+        .small-2 {
+            width: 47%;
+            margin: 1.5%;
+        }
+    
+        .small-1 {
+            width: 100%;
+            margin: 1.5% 0;
+        }
     }
 }
 
