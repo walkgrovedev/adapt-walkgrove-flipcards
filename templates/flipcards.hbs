@@ -10,8 +10,8 @@
           {{#if _front._icon}}<img src="{{_front._icon}}" class="flipcards__icon" />{{/if}}
         </div>
         <div class="flipcards__card-back">
-          {{#if _back.title}}<div class="flipcards__title-back">{{_back.title}}</div>{{/if}}
-          {{#if _back.content}}<div class="flipcards__content">{{_back.content}}</div>{{/if}}
+          {{#if _back.title}}<div class="flipcards__title-back">{{{_back.title}}}</div>{{/if}}
+          {{#if _back.content}}<div class="flipcards__content">{{{_back.content}}}</div>{{/if}}
           {{#if _back._image}}<img src="{{_back._image}}" class="flipcards__image" />{{/if}}
         </div>
       </div>
