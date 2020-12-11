@@ -81,6 +81,12 @@
         backface-visibility: visible;
     }
 
+    .is-flipped {
+        .flipcards__title-front {
+            display: none;
+        }
+    }
+
     .is-not-flipped .flipcards__card-back {
         animation: flipBackOut;
         animation-duration: 1s;
