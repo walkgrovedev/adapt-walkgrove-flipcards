@@ -30,15 +30,28 @@ define([
     onFlip: function(event) {
       event.preventDefault();
 
+      const cardIndex = $(event.currentTarget).parent().data('index');
+
       if(this.$(event.currentTarget).hasClass('is-flipped') === true) {
         this.$(event.currentTarget).addClass('is-not-flipped');
         this.$(event.currentTarget).removeClass('is-flipped');
       }else {
         this.$(event.currentTarget).addClass('is-flipped');
         this.$(event.currentTarget).removeClass('is-not-flipped');
+
+        //audio?
+        if (Adapt.config.get('_sound')._isActive === true) {
+          this.model.get('_items').forEach((item, i) => {
+            if (i === cardIndex) {
+              if (item._audio) {
+                Adapt.trigger('audio:partial', {src: item._audio._src});
+              }
+            }
+          });
+        }
       }
 
-      const cardIndex = $(event.currentTarget).parent().data('index');
+      
       this.setItemVisited(cardIndex);
     },
 
