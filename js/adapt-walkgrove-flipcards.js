@@ -36,12 +36,28 @@ define([
         this.$(event.currentTarget).addClass('is-not-flipped');
         this.$(event.currentTarget).removeClass('is-flipped');
 
-        this.$(event.currentTarget).find('flipcards__title-front').a11y_focus();
+        if(this.$(event.currentTarget).find('.flipcards__title-front').length) {
+          this.$(event.currentTarget).find('.flipcards__title-front').a11y_focus();
+        } else {
+          if(this.$(event.currentTarget).find('.flipcards__icon').length) {
+            this.$(event.currentTarget).find('.flipcards__icon').a11y_focus();
+          }else{
+            this.$(event.currentTarget).a11y_focus();
+          }
+        }
       }else {
         this.$(event.currentTarget).addClass('is-flipped');
         this.$(event.currentTarget).removeClass('is-not-flipped');
 
-        this.$(event.currentTarget).find('flipcards__title-back').a11y_focus();
+        if(this.$(event.currentTarget).find('.flipcards__title-back').length) {
+          this.$(event.currentTarget).find('.flipcards__title-back').a11y_focus();
+        } else {
+          if(this.$(event.currentTarget).find('.flipcards__content').length) {
+            this.$(event.currentTarget).find('.flipcards__content').a11y_focus();
+          }else{
+            this.$(event.currentTarget).a11y_focus();
+          }
+        }
 
         //audio?
         if (Adapt.config.get('_sound')._isActive === true) {
