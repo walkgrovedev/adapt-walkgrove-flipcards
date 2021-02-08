@@ -35,9 +35,13 @@ define([
       if(this.$(event.currentTarget).hasClass('is-flipped') === true) {
         this.$(event.currentTarget).addClass('is-not-flipped');
         this.$(event.currentTarget).removeClass('is-flipped');
+
+        this.$(event.currentTarget).find('flipcards__title-front').a11y_focus();
       }else {
         this.$(event.currentTarget).addClass('is-flipped');
         this.$(event.currentTarget).removeClass('is-not-flipped');
+
+        this.$(event.currentTarget).find('flipcards__title-back').a11y_focus();
 
         //audio?
         if (Adapt.config.get('_sound')._isActive === true) {
