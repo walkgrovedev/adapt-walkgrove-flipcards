@@ -15,7 +15,8 @@ define([
     },
 
     postRender: function() {
-      this.setReadyStatus();this.setupInview();
+      this.setReadyStatus();
+      //this.setupInview();
     },
 
     setupInview: function() {
